@@ -8,6 +8,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+venv/
 build/
 develop-eggs/
 dist/
@@ -68,6 +69,10 @@ target/
 
 # VS Code
 .vscode/
+
+# catboost
+catboost_info
+*.cbm
 
 # Spyder
 .spyproject/

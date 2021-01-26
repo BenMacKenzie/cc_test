@@ -3,6 +3,8 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+from sklearn.model_selection import train_test_split
+import pandas as pd
 
 
 @click.command()
@@ -14,6 +16,12 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+    df = pd.read_csv(f"{input_filepath}/heart.csv")
+    train, test = train_test_split(df, train_size=0.8, random_state=889, stratify=df['narrowing-diagnosis'])
+
+    train.to_csv(f"{output_filepath}/train.csv", index=False)
+    test.to_csv(f"{output_filepath}/test.csv", index=False)
+
 
 
 if __name__ == '__main__':
